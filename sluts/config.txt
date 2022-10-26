@@ -34,6 +34,8 @@ quantityMenu.minCount = 6 ; Number of items required to trigger quantity dialog.
 ; =====================================================================================================================
 [Appearance] 
 ; =====================================================================================================================
+; TODO: .source options should point at a custom swf with custom once soonTM
+
 icons.category.source = 'skyui/icons_category_psychosteve.swf'
 
 icons.item.source = 'skyui/icons_item_psychosteve.swf'
@@ -53,7 +55,7 @@ colors.negative.disabled = 0x800000
 vars.a_textBorder.value = <0, 0, 1.1, 0> ; left right top bottom
 vars.n_iconSize.value = 18
 
-defaults.entryWidth = 530
+defaults.entryWidth = 590
 
 ; Default text format defaults -------------------------------------------------------
 defaults.entry.textFormat.font = '$EverywhereMediumFont'
@@ -117,48 +119,6 @@ columns.itemNameColumn.state1.label.text = '$NAME'
 columns.itemNameColumn.state1.entry.text = @text
 columns.itemNameColumn.state1.sortOptions = {ASCENDING | CASEINSENSITIVE}
 
-; ITEM NAME COLUMN -------------------------------------------------------
-columns.itemNameColumn.type = NAME
-columns.itemNameColumn.name = '$NAME'
-columns.itemNameColumn.states = 1
-columns.itemNameColumn.weight = 1.0
-columns.itemNameColumn.border = a_textBorder
-columns.itemNameColumn.label.textFormat.align = left
-
-columns.itemNameColumn.state1.label.text = '$NAME'
-columns.itemNameColumn.state1.entry.text = @text
-columns.itemNameColumn.state1.sortOptions = {ASCENDING | CASEINSENSITIVE}
-
-; ITEM NAME COLUMN -------------------------------------------------------
-columns.itemNameColumn.type = NAME
-columns.itemNameColumn.name = '$NAME'
-columns.itemNameColumn.states = 1
-columns.itemNameColumn.weight = 1.0
-columns.itemNameColumn.border = a_textBorder
-columns.itemNameColumn.label.textFormat.align = left
-
-columns.itemNameColumn.state1.label.text = '$NAME'
-columns.itemNameColumn.state1.entry.text = @text
-columns.itemNameColumn.state1.sortOptions = {ASCENDING | CASEINSENSITIVE}
-
-; WEIGHT COLUMN -------------------------------------------------------
-columns.weightColumn.type = TEXT
-columns.weightColumn.name = '$WEIGHT'
-columns.weightColumn.states = 2
-columns.weightColumn.width = 0.09
-columns.weightColumn.border = a_textBorder
-
-columns.weightColumn.state1.label.text = '$WGT'
-columns.weightColumn.state1.label.arrowDown = true
-columns.weightColumn.state1.entry.text = @infoWeight
-columns.weightColumn.state1.sortAttributes = <infoWeight, text>
-columns.weightColumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
-
-columns.weightColumn.state2.label.text = '$WGT'
-columns.weightColumn.state2.entry.text = @infoWeight
-columns.weightColumn.state2.sortAttributes = <infoWeight, text>
-columns.weightColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
-
 ; VALUE COLUMN -------------------------------------------------------
 columns.valueColumn.type = TEXT
 columns.valueColumn.name = '$VALUE'
@@ -177,27 +137,63 @@ columns.valueColumn.state2.entry.text = @infoValue
 columns.valueColumn.state2.sortAttributes = <infoValue, text>
 columns.valueColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
+; SUBTYPE COLUMN -------------------------------------------------------
+columns.subTypeColumn.type = TEXT
+columns.subTypeColumn.name = '$TYPE'
+columns.subTypeColumn.states = 2
+columns.subTypeColumn.width = 0.15
+columns.subTypeColumn.border = a_textBorder
+
+columns.subTypeColumn.state1.label.text = '$TYPE'
+columns.subTypeColumn.state1.entry.text = @subTypeDisplay
+columns.subTypeColumn.state1.sortAttributes = <subTypeDisplay, text>
+columns.subTypeColumn.state1.sortOptions = <{ASCENDING | CASEINSENSITIVE}, {ASCENDING | CASEINSENSITIVE}>
+
+columns.subTypeColumn.state2.label.text = '$TYPE'
+columns.subTypeColumn.state2.entry.text = @subTypeDisplay
+columns.subTypeColumn.state2.label.arrowDown = true
+columns.subTypeColumn.state2.sortAttributes = <subTypeDisplay, text>
+columns.subTypeColumn.state2.sortOptions = <{DESCENDING | CASEINSENSITIVE}, {ASCENDING | CASEINSENSITIVE}>
+
 ; STOCK COLUMN -------------------------------------------------------
-columns.stockColumn.type = TEXT
-columns.stockColumn.name = '$STOCK'
-columns.stockColumn.states = 2
-columns.stockColumn.width = 0.09
-columns.stockColumn.border = a_textBorder
+; columns.stockColumn.type = TEXT
+; columns.stockColumn.name = '$STOCK'
+; columns.stockColumn.states = 2
+; columns.stockColumn.width = 0.09
+; columns.stockColumn.border = a_textBorder
+; 
+; columns.stockColumn.state1.label.text = '$STK'
+; columns.stockColumn.state1.label.arrowDown = true
+; columns.stockColumn.state1.entry.text = @infoStock
+; columns.stockColumn.state1.sortAttributes = <infoStock, text>
+; columns.stockColumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+; 
+; columns.stockColumn.state2.label.text = '$STK'
+; columns.stockColumn.state2.entry.text = @infoStock
+; columns.stockColumn.state2.sortAttributes = <infoStock, text>
+; columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
-columns.stockColumn.state1.label.text = '$STK'
-columns.stockColumn.state1.label.arrowDown = true
-columns.stockColumn.state1.entry.text = @infoStock
-columns.stockColumn.state1.sortAttributes = <infoStock, text>
-columns.stockColumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+; RANK COLUMN -------------------------------------------------------
+columns.rankcolumn.type = TEXT
+columns.rankcolumn.name = '$RANK'
+columns.rankcolumn.states = 2
+columns.rankcolumn.width = 0.09
+columns.rankcolumn.border = a_textBorder
 
-columns.stockColumn.state2.label.text = '$STK'
-columns.stockColumn.state2.entry.text = @infoStock
-columns.stockColumn.state2.sortAttributes = <infoStock, text>
-columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+columns.rankcolumn.state1.label.text = '$RANK'
+columns.rankcolumn.state1.label.arrowDown = true
+columns.rankcolumn.state1.entry.text = @infoRank
+columns.rankcolumn.state1.sortAttributes = <infoRank, text>
+columns.rankcolumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+
+columns.rankcolumn.state2.label.text = '$RANK'
+columns.rankcolumn.state2.entry.text = @infoRank
+columns.rankcolumn.state2.sortAttributes = <infoRank, text>
+columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
 ; ITEM VIEWS -------------------------------------------------------
 views.exchangeView.primaryColumn = itemNameColumn
-views.exchangeView.columns = <equipColumn, iconColumn, itemNameColumn, stockColumn, weightColumn, valueColumn>
+views.exchangeView.columns = <equipColumn, iconColumn, itemNameColumn, subTypeColumn, valueColumn, rankcolumn>
 
 ; LAYOUTS -------------------------------------------------------
 layouts.fillyexchangelayout.name = 'FillyExchangeLayout'

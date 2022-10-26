@@ -1,76 +1,183 @@
-﻿
-import ShopList;
-import skyui.components.list.ListLayout;
+﻿import flash.geom.ColorTransform;
+import flash.geom.Transform;
+
+import skyui.components.list.TabularList;
+import skyui.components.list.TabularListEntry;
 import skyui.components.list.ListState;
-import skyui.components.list.ColumnLayoutData;
-import skyui.components.list.IEntryFormatter;
-import skyui.components.list.BasicListEntry;
+import skyui.util.ConfigManager;
 
-class ShopListEntry extends BasicListEntry 
-{	
-	/* STAGE ELEMENTS */
-	public var _nametag: TextField;
-	public var _pricetag: TextField;
 
-	public var _soldout: TextField;
-	public var _selectIndicator: MovieClip;
-	private var selectIndicatorArrow: MovieClip;
-	private var selectIndicatorBG: MovieClip;
+class ShopListEntry extends TabularListEntry
+{
+  /* CONSTANTS */
+  
+	private static var STATES = ["None", "Equipped", "LeftEquip", "RightEquip", "LeftAndRightEquip"];
+
+  /* PRIVATE VARIABLES */
 	
-	// ---
-	private var type: String;
-
-	public static var defaultTextColor: Number = 0xCCCCCC;
-	// public static var activeTextColor: Number = 0xffffff;
-	// public static var selectedTextColor: Number = 0xffffff;
-	public static var disabledTextColor: Number = 0x454545;
-	public static var expensiveTextColor: Number = 0xFF0000;
-
-	// ---
-	public function ShopListEntry()
+	private var _iconLabel: String;
+	private var _iconColor: Number;
+	
+  /* STAGE ELMENTS */
+  
+  	public var itemIcon: MovieClip;
+  	public var equipIcon: MovieClip;
+	
+	public var bestIcon: MovieClip;
+	public var favoriteIcon: MovieClip;
+	public var poisonIcon: MovieClip;
+	public var stolenIcon: MovieClip;
+	public var enchIcon: MovieClip;
+	public var readIcon: MovieClip;
+	
+	
+  /* INITIALIZATION */
+	
+  // @override TabularListEntry
+	public function initialize(a_index: Number, a_state: ListState): Void
 	{
-		super();
-
-		// constructor code
-		selectIndicatorArrow = _selectIndicator._arrow;
-		selectIndicatorBG = _selectIndicator._background;
+		super.initialize();
+		
+		var iconLoader = new MovieClipLoader();
+		iconLoader.addListener(this);
+		iconLoader.loadClip(a_state.iconSource, itemIcon);
+		
+		itemIcon._visible = false;
+		equipIcon._visible = false;
+		
+		for (var i = 0; this["textField" + i] != undefined; i++)
+			this["textField" + i]._visible = false;
 	}
+	
+	
+  /* PUBLIC FUNCTIONS */
 
-	// IDEA: when option disabled, set color selectIndicatorBG to #660000 || otherwise #666666
+	// @override TabularListEntry
 	public function setEntry(a_entryObject: Object, a_state: ListState): Void
 	{
-		// Not using "enabled" directly, because we still want to be able to receive onMouseX events,
-		// even if we chose not to process them.
-		isEnabled = a_entryObject.enabled;
-		var isSelected = a_entryObject == a_state.list.selectedEntry;
-		
-		_nametag.text = a_entryObject.name;
-		_pricetag.text = a_entryObject.price + " F.C.";
-		a_entryObject.disablereason;
-		if (isEnabled) {
-			_soldout.text = " ";
-			_nametag.textColor = defaultTextColor;
-			if (a_entryObject.price > Shop.COINS) {
-				_pricetag.textColor = expensiveTextColor;
-				// isEnabled = false;
-			} else {
-				_pricetag.textColor = defaultTextColor;
-			}
-			_pricetag._alpha = 100
-			_nametag._alpha = 100
-		} else {
-			if (a_entryObject.rank > Shop.RANK)
-				_soldout.text = "$SLUTS_ReqRank{" + a_entryObject.rank + "}";
-			else if (a_entryObject.stock == 0)
-				_soldout.text = "$SOLD OUT";
-			_pricetag.textColor = disabledTextColor;
-			_nametag.textColor = disabledTextColor;
+		super.setEntry(a_entryObject, a_state);
 
-			_pricetag._alpha = 35
-			_nametag._alpha = 35
+		if (a_entryObject.extra.count == 0 && a_entryObject.enabled)
+			a_entryObject.enabled = false;
+	}
+	
+  // @override TabularListEntry
+	public function setSpecificEntryLayout(a_entryObject: Object, a_state: ListState): Void
+	{
+		var iconY = TabularList(a_state.list).layout.entryHeight * 0.25;
+		var iconSize = TabularList(a_state.list).layout.entryHeight * 0.5;
+			
+		bestIcon._height = bestIcon._width = iconSize;
+		favoriteIcon._height = favoriteIcon._width = iconSize;
+		poisonIcon._height = poisonIcon._width = iconSize;
+		stolenIcon._height = stolenIcon._width = iconSize;
+		enchIcon._height = enchIcon._width = iconSize;
+		readIcon._height = readIcon._width = iconSize;
+			
+		bestIcon._y = iconY;
+		favoriteIcon._y = iconY;
+		poisonIcon._y = iconY;
+		stolenIcon._y = iconY;
+		enchIcon._y = iconY;
+		readIcon._y = iconY;
+	}
+
+  // @override TabularListEntry
+	public function formatEquipIcon(a_entryField: Object, a_entryObject: Object, a_state: ListState): Void
+	{
+		if (a_entryObject != undefined && a_entryObject.equipState != undefined) {
+			a_entryField.gotoAndStop(STATES[a_entryObject.equipState]);
+		} else {
+			a_entryField.gotoAndStop("None");
 		}
+	}
+
+  // @override TabularListEntry
+	public function formatItemIcon(a_entryField: Object, a_entryObject: Object, a_state: ListState)
+	{
+		_iconLabel = a_entryObject["iconLabel"] != undefined ? a_entryObject["iconLabel"] : "default_misc";
+		_iconColor = a_entryObject["iconColor"];
+
+		// Could return here if _iconLoaded is false
+		a_entryField.gotoAndStop(_iconLabel);
+		changeIconColor(MovieClip(a_entryField), _iconColor);
+	}
+
+  // @override TabularListEntry
+	public function formatName(a_entryField: Object, a_entryObject: Object, a_state: ListState): Void
+	{
+		if (a_entryObject.extra.name == undefined) {
+			a_entryField.SetText("$SLUTS_MysteryGift");
+			return;
+		}
+
+		// Text
+		var text = a_entryObject.extra.name;
+
+		if (a_entryObject.soulLVL != undefined) {
+			text = text + " (" + a_entryObject.soulLVL + ")";
+		}
+
+		if (a_entryObject.extra.count != undefined && a_entryObject.extra.count > 0) {
+			text += " (" + a_entryObject.extra.count.toString() + ")";
+		}
+
+		if (text.length > a_state.maxTextLength) {
+			text = text.substr(0, a_state.maxTextLength - 3) + "...";
+		}
+
+		a_entryField.autoSize = "left";
+		a_entryField.SetText(text);
 		
-		_selectIndicator._visible = isSelected;
-		
+		formatColor(a_entryField, a_entryObject, a_state);
+	}
+	
+  // @override TabularEntry
+	public function formatText(a_entryField: Object, a_entryObject: Object, a_state: ListState): Void
+	{
+		formatColor(a_entryField, a_entryObject, a_state);
+	}
+	
+	
+  /* PRIVATE FUNCTIONS */
+
+	// @implements MovieClipLoader
+	private function onLoadInit(a_icon: MovieClip): Void
+	{
+		a_icon.gotoAndStop(_iconLabel);
+		changeIconColor(a_icon, _iconColor);
+	}
+	
+	private function formatColor(a_entryField: Object, a_entryObject: Object, a_state: ListState): Void
+	{
+		// Negative Effect
+		if (a_entryObject.negativeEffect == true)
+			a_entryField.textColor = a_entryObject.enabled == false ? a_state.negativeDisabledColor : a_state.negativeEnabledColor;
+			
+		// Stolen
+		else if (a_entryObject.infoIsStolen == true || a_entryObject.isStealing == true)
+			a_entryField.textColor = a_entryObject.enabled == false ? a_state.stolenDisabledColor : a_state.stolenEnabledColor;
+			
+		// Default
+		else
+			a_entryField.textColor = a_entryObject.enabled == false ? a_state.defaultDisabledColor : a_state.defaultEnabledColor;
+	}
+	
+	private function changeIconColor(a_icon: MovieClip, a_rgb: Number): Void
+	{
+		var element: Object;
+		for (var e: String in a_icon) {
+			element = a_icon[e];
+			if (element instanceof MovieClip) {
+				//Note: Could check if all values of RGBA mult and .rgb are all the same then skip
+				var ct: ColorTransform = new ColorTransform();
+				var tf: Transform = new Transform(MovieClip(element));
+				// Could return here if (a_rgb == tf.colorTransform.rgb && a_rgb != undefined)
+				ct.rgb = (a_rgb == undefined)? 0xFFFFFF: a_rgb;
+				tf.colorTransform = ct;
+				// Shouldn't be necessary to recurse since we don't expect multiple clip depths for an icon
+				//changeIconColor(element, a_rgb);
+			}
+		}
 	}
 }
