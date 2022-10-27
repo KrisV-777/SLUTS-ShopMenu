@@ -31,7 +31,7 @@ class BottomBarEX extends MovieClip {
 
 		// using vendor panel for displaying filly rank
 		infoCard.VendorGoldLabel.textAutoSize = "shrink";
-		infoCard.VendorGoldLabel.SetText("$Sluts_FillyRank");
+		infoCard.VendorGoldLabel.SetText("$SLUTS_FillyRank");
 
 		updateBarterPriceInfo(a_playercoins, a_fillyrank, a_itemUpdateObj);
 	}
@@ -65,9 +65,9 @@ class BottomBarEX extends MovieClip {
 	{
 		var infoCard = bottomBar.playerInfoCard;
 		infoCard.PlayerGoldLabel.textAutoSize = "shrink";
-		infoCard.PlayerGoldLabel.SetText("$Sluts_FillyCoins");
+		infoCard.PlayerGoldLabel.SetText("$SLUTS_FillyCoins");
 
 		infoCard.VendorGoldLabel.textAutoSize = "shrink";
-		infoCard.VendorGoldLabel.SetText("$Sluts_FillyRank");
+		infoCard.VendorGoldLabel.SetText("$SLUTS_FillyRank");
 	}
 }

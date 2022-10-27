@@ -5,6 +5,7 @@ import skyui.components.list.TabularList;
 import skyui.components.list.TabularListEntry;
 import skyui.components.list.ListState;
 import skyui.util.ConfigManager;
+import skyui.util.Translator;
 
 
 class ShopListEntry extends TabularListEntry
@@ -106,13 +107,13 @@ class ShopListEntry extends TabularListEntry
   // @override TabularListEntry
 	public function formatName(a_entryField: Object, a_entryObject: Object, a_state: ListState): Void
 	{
-		if (a_entryObject.extra.name == undefined) {
+		if (a_entryObject.text == undefined) {
 			a_entryField.SetText("$SLUTS_MysteryGift");
 			return;
 		}
 
 		// Text
-		var text = a_entryObject.extra.name;
+		var text = a_entryObject.text;
 
 		if (a_entryObject.soulLVL != undefined) {
 			text = text + " (" + a_entryObject.soulLVL + ")";
@@ -122,8 +123,7 @@ class ShopListEntry extends TabularListEntry
 			if (a_entryObject.extra.count > 0)
 				text += " (" + a_entryObject.extra.count.toString() + ")";
 			else if (a_entryObject.extra.count == 0)
-				text += " (SOLD OUT)";
-				a_entryObject.enabled = false;
+				text += " (" + Translator.translate("$SLUTS_SoldOut") + ")";
 		}
 
 		if (text.length > a_state.maxTextLength) {

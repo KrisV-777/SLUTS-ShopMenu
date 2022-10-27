@@ -22,8 +22,8 @@ import skyui.util.DialogManager;
 import skyui.util.Debug;
 
 import skyui.defines.Input;
-
 import CategoryListV;
+import ExchangeType;
 
 class ShopLists extends MovieClip 
 {
@@ -127,8 +127,7 @@ class ShopLists extends MovieClip
 	{
 		if (itemList.listEnumeration != undefined)
 			return;
-		
-		// itemList.listEnumeration = new BasicEnumeration(itemList.entryList);
+
 		var listEnumeration = new FilteredEnumeration(itemList.entryList);
 		listEnumeration.addFilter(_typeFilter);
 		listEnumeration.addFilter(_nameFilter);
@@ -141,12 +140,12 @@ class ShopLists extends MovieClip
 	{
 		var categories = [
 			{text: "$All", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			// {text: "$Valuables", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$Customization", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$Filly Gear", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$Upgrades", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$Licenses", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$Miscellaneous", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1}
+			// {text: "$SLUTS_Valuables", flag: ExchangeType.VALUABLE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_FillyGear", flag: ExchangeType.GEAR, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Licenses", flag: ExchangeType.LICENSE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Upgrades", flag: ExchangeType.UPGRADE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Extra", flag: ExchangeType.EXTRA, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Miscellaneous", flag: ExchangeType.UNSPECIFIED + ExchangeType.VALUABLE, bDontHide: true, savedItemIndex: 0, filterFlag: 1}
 		];
 
 		categoryList.listEnumeration = new BasicEnumeration(categoryList.entryList);
@@ -196,8 +195,6 @@ class ShopLists extends MovieClip
 	// @GFx
 	public function handleInput(details: InputDetails, pathToFocus: Array): Boolean
 	{
-		// if (_currentState != SHOW_PANEL)
-		// 	return false;
 		if (_disableInput)
 			return false;
 
@@ -346,17 +343,6 @@ class ShopLists extends MovieClip
 		itemList.requestInvalidate();
 	}
 	
-	// TODO: find out when and why is called. Prolly never invoked tho
-	// private function onTabBarLoad(): Void
-	// {
-	// 	// tabBar = panelContainer.tabBar;
-	// 	tabBar.setIcons(_tabBarIconArt[0], _tabBarIconArt[1]);
-	// 	tabBar.addEventListener("tabPress", this, "onTabPress");
-		
-	// 	if (categoryList.dividerIndex != -1)
-	// 		tabBar.setLabelText(_leftTabText, _rightTabText);
-	// }
-	
 	private function onColumnSelectButtonPress(event: Object): Void
 	{
 		if (event.type == "timeout") {
@@ -375,10 +361,6 @@ class ShopLists extends MovieClip
 		categoryList.disableSelection = categoryList.disableInput = true;
 		itemList.disableSelection = itemList.disableInput = true;
 		searchWidget.isDisabled = true;
-			
-		// TODO: figure out what this does and replace it if needed
-		// _columnSelectDialog = DialogManager.open(panelContainer, "ColumnSelectDialog", {_x: 554, _y: 35, layout: itemList.layout});
-		// _columnSelectDialog.addEventListener("dialogClosed", this, "onColumnSelectDialogClosed");
 	}
 	
 	private function onColumnSelectDialogClosed(event: Object): Void

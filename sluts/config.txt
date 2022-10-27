@@ -175,18 +175,18 @@ columns.subTypeColumn.state2.sortOptions = <{DESCENDING | CASEINSENSITIVE}, {ASC
 
 ; RANK COLUMN -------------------------------------------------------
 columns.rankcolumn.type = TEXT
-columns.rankcolumn.name = '$RANK'
+columns.rankcolumn.name = '$SLUTS_Rank'
 columns.rankcolumn.states = 2
 columns.rankcolumn.width = 0.09
 columns.rankcolumn.border = a_textBorder
 
-columns.rankcolumn.state1.label.text = '$RANK'
+columns.rankcolumn.state1.label.text = '$SLUTS_Rank'
 columns.rankcolumn.state1.label.arrowDown = true
 columns.rankcolumn.state1.entry.text = @infoRank
 columns.rankcolumn.state1.sortAttributes = <infoRank, text>
 columns.rankcolumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
-columns.rankcolumn.state2.label.text = '$RANK'
+columns.rankcolumn.state2.label.text = '$SLUTS_Rank'
 columns.rankcolumn.state2.entry.text = @infoRank
 columns.rankcolumn.state2.sortAttributes = <infoRank, text>
 columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
@@ -195,6 +195,10 @@ columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CAS
 views.exchangeView.primaryColumn = itemNameColumn
 views.exchangeView.columns = <equipColumn, iconColumn, itemNameColumn, subTypeColumn, valueColumn, rankcolumn>
 
+views.extraView.primaryColumn = itemNameColumn
+views.extraView.columns = <equipColumn, iconColumn, itemNameColumn, valueColumn, rankcolumn>
+views.extraView.category = <ExchangeType.EXTRA>
+
 ; LAYOUTS -------------------------------------------------------
 layouts.fillyexchangelayout.name = 'FillyExchangeLayout'
-layouts.fillyexchangelayout.views = <exchangeView>
+layouts.fillyexchangelayout.views = <exchangeView, extraView>
