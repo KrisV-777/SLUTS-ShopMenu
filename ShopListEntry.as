@@ -118,8 +118,12 @@ class ShopListEntry extends TabularListEntry
 			text = text + " (" + a_entryObject.soulLVL + ")";
 		}
 
-		if (a_entryObject.extra.count != undefined && a_entryObject.extra.count > 0) {
-			text += " (" + a_entryObject.extra.count.toString() + ")";
+		if (a_entryObject.extra.count != undefined) {
+			if (a_entryObject.extra.count > 0)
+				text += " (" + a_entryObject.extra.count.toString() + ")";
+			else if (a_entryObject.extra.count == 0)
+				text += " (SOLD OUT)";
+				a_entryObject.enabled = false;
 		}
 
 		if (text.length > a_state.maxTextLength) {

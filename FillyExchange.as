@@ -159,10 +159,6 @@ class FillyExchange extends MovieClip
 		skse.ExtendData(true);
 		skse.ForceContainerCategorization(true);
 
-
-		// TODO: prolly want to replace these with papyrus callbacks. Assuming this is called by the dll for default menus
-		// GameDelegate.addCallBack("UpdateItemCardInfo",this,"UpdateItemCardInfo");
-
 		// TODO: rename these or something, not sure what they mean
 		shopLists.addEventListener("itemHighlightChange", this, "onItemHighlightChange");
 		shopLists.addEventListener("showItemsList", this, "onShowItemsList");
@@ -191,7 +187,7 @@ class FillyExchange extends MovieClip
 
 		// positionFloatingElements();	TODO: figure out tf this does
 
-		var itemListState = shopLists.itemList.listState;	// TODO: figure out what 'listState' is
+		var itemListState = shopLists.itemList.listState;
 		var appearance = _config["Appearance"];
 
 		var categoryListState = shopLists.categoryList.listState;
@@ -214,7 +210,6 @@ class FillyExchange extends MovieClip
 
 		updateBottomBar(false);
 
-		// TODO: w/e tf this does
 		var itemList: TabularList = shopLists.itemList;
 		itemList.addDataProcessor(new ShopDataSetter(_buyMult, _coinRatio));
 		itemList.addDataProcessor(new InventoryIconSetter(_config["Appearance"]));
@@ -278,20 +273,6 @@ class FillyExchange extends MovieClip
 		return true;
 	}
 
-	// TODO: This is called by the dll. Not sure why or when exactly used
-	// public function UpdateItemCardInfo(a_updateObj: Object): Void
-	// {
-	// 	if (isViewingVendorItems()) {
-	// 		a_updateObj.value = a_updateObj.value;
-	// 		a_updateObj.value = Math.max(a_updateObj.value, 1);
-	// 	} else {
-	// 		a_updateObj.value = a_updateObj.value;
-	// 	}
-	// 	a_updateObj.value = Math.floor(a_updateObj.value + 0.5);
-	// 	itemCard.itemInfo = a_updateObj;
-	// 	// bottomBar.updateBarterPerItemInfo(a_updateObj); TODO: rewrite to call some wrapepr in BottomBarEX
-	// }
-
   /* PRIVATE FUNCTIONS */
 
 	private function onItemSelect(event: Object): Void
@@ -303,6 +284,7 @@ class FillyExchange extends MovieClip
 			if (_quantityMinCount < 1 || event.entry.count < _quantityMinCount)
 				onQuantityMenuSelect({amount:1, item: event.entry});
 			else
+				skse.SendModEvent("Sluts_PrintInfo", "Showing Quant Menu");
 				_itemSelected = event.entry;
 				itemCard.ShowQuantityMenu(event.entry.count);
 		}
@@ -336,30 +318,6 @@ class FillyExchange extends MovieClip
 	{
 		if (event.index != -1)
 			updateBottomBar(true);
-
-		// TODO: figure out if this is even used
-		// if (event.index != -1) {
-		// 	if (!_bItemCardFadedIn) {
-		// 		_bItemCardFadedIn = true;
-
-		// 		if (_bItemCardPositioned)
-		// 			itemCard.FadeInCard();
-		// 	}
-
-		// 	if (_bItemCardPositioned)
-		// 		GameDelegate.call("UpdateItem3D",[true]);
-
-		// 	GameDelegate.call("RequestItemCardInfo",[], this, "UpdateItemCardInfo");
-
-		// } else {
-		// 	if (!bFadedIn)
-		// 		resetMenu();
-
-		// 	if (_bItemCardFadedIn) {
-		// 		_bItemCardFadedIn = false;
-		// 		onHideItemsList();
-		// 	}
-		// }
 	}
 
 	// @override ItemMenu
@@ -394,33 +352,22 @@ class FillyExchange extends MovieClip
 				onQuantitySliderChange({value:itemCard.itemInfo.count});
 				return;
 			}
-			// TODO: update wrapper
-			// bottomBar.updateBarterPriceInfo(_playerGold, _vendorGold);
+			bottomBarEX.updateBarterPriceInfo(_playerCoins, _playerRank);
 		}
 	}
 
-	// TODO: remove; should always return true?
-	private function isViewingVendorItems(): Boolean
-	{
-		return true;
-		// return shopLists.categoryList.activeSegment == 0;
-	}
-
-	// TODO: write wrapper cause will need unique bottomBar thing
 	private function updateBottomBar(a_bSelected: Boolean): Void
 	{
 		navPanel.clearButtons();
 
+		navPanel.addButton({text: "$Exit", controls: _cancelControls});
+		navPanel.addButton({text: "$Search", controls: _searchControls});
+		if (_platform != 0) {
+			navPanel.addButton({text: "$Column", controls: _sortColumnControls});
+			navPanel.addButton({text: "$Order", controls: _sortOrderControls});
+		}
 		if (a_bSelected) {
 			navPanel.addButton({text: "$Buy", controls: Input.Activate});
-		} else {
-			navPanel.addButton({text: "$Exit", controls: _cancelControls});
-			navPanel.addButton({text: "$Search", controls: _searchControls});
-			if (_platform != 0) {
-				navPanel.addButton({text: "$Column", controls: _sortColumnControls});
-				navPanel.addButton({text: "$Order", controls: _sortOrderControls});
-			}
-			// navPanel.addButton({text: "$Switch Tab", controls: _switchControls});
 		}
 
 		navPanel.updateButtons(true);
