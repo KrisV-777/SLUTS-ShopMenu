@@ -405,7 +405,7 @@ class FillyExchange extends MovieClip
 		navPanel.clearButtons();
 
 		navPanel.addButton({text: "$Exit", controls: _cancelControls});
-		navPanel.addButton({text: "$Search", controls: _searchControls});
+		// navPanel.addButton({text: "$Search", controls: _searchControls});
 		if (_platform != 0) {
 			navPanel.addButton({text: "$Column", controls: _sortColumnControls});
 			navPanel.addButton({text: "$Order", controls: _sortOrderControls});
