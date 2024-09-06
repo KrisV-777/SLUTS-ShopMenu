@@ -69,7 +69,7 @@ class CategoryListV extends CategoryList {
 			return;
 		}
 			
-		if (_selectedIndex == -1) {
+		// if (_selectedIndex == -1) {
 			selectorCenter._visible = false;
 
 			if (selectorLeft != undefined)
@@ -79,7 +79,7 @@ class CategoryListV extends CategoryList {
 				selectorRight._visible = false;
 
 			return;
-		} 
+		// }
 
 		var selectedClip = _entryClipManager.getClip(_selectedIndex - _segmentOffset);
 

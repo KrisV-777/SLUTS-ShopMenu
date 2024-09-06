@@ -235,7 +235,6 @@ class FillyExchange extends MovieClip
 		itemList.addDataProcessor(new InventoryIconSetter(_config["Appearance"]));
 		itemList.addDataProcessor(new PropertyDataExtender(_config["Appearance"], _config["Properties"], "itemProperties", "itemIcons", "itemCompoundProperties"));
 
-		// var layout: ListLayout = ListLayoutManager.createLayout(_config["ListLayout"], "ItemListLayout");
 		var layout: ListLayout = ListLayoutManager.createLayout(_config["ListLayout"], "FillyExchangeLayout");
 		itemList.layout = layout;
 
@@ -243,6 +242,8 @@ class FillyExchange extends MovieClip
 		if (shopLists.categoryList.selectedEntry) {
 			layout.changeFilterFlag(shopLists.categoryList.selectedEntry.flag);
 		}
+
+		shopLists.SetCategoriesList();
 	}
 
 	/* SERIALIZATION */	

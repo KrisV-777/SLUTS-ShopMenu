@@ -49,10 +49,10 @@ class BottomBarEX extends MovieClip {
 			infoCard.PlayerGoldValue.SetText(a_playercoins.toString() + " <font color=\'#FF0000\'>(" + a_goldDelta.toString() + ")</font>", true);
 		}
 
-		infoCard.VendorGoldValue.textAutoSize = "shrink";
-		infoCard.VendorGoldValue.SetText(a_fillyrank.toString());
+		// infoCard.VendorGoldValue.textAutoSize = "shrink";
+		// infoCard.VendorGoldValue.SetText(a_fillyrank.toString());
 
-		infoCard.VendorGoldLabel._x = infoCard.VendorGoldValue._x + infoCard.VendorGoldValue.getLineMetrics(0).x - infoCard.VendorGoldLabel._width;
+		// infoCard.VendorGoldLabel._x = infoCard.VendorGoldValue._x + infoCard.VendorGoldValue.getLineMetrics(0).x - infoCard.VendorGoldLabel._width;
 		infoCard.PlayerGoldValue._x = infoCard.VendorGoldLabel._x + infoCard.VendorGoldLabel.getLineMetrics(0).x - infoCard.PlayerGoldValue._width - 10;
 		infoCard.PlayerGoldLabel._x = infoCard.PlayerGoldValue._x + infoCard.PlayerGoldValue.getLineMetrics(0).x - infoCard.PlayerGoldLabel._width;
 		infoCard.CarryWeightValue._x = infoCard.PlayerGoldLabel._x + infoCard.PlayerGoldLabel.getLineMetrics(0).x - infoCard.CarryWeightValue._width - 5;
@@ -67,6 +67,8 @@ class BottomBarEX extends MovieClip {
 		infoCard.PlayerGoldLabel.textAutoSize = "shrink";
 		infoCard.PlayerGoldLabel.SetText("$SLUTS_FillyCoins");
 
+		infoCard.VendorGoldValue._visible = false;
+		infoCard.VendorGoldLabel._visible = false;
 		infoCard.VendorGoldLabel.textAutoSize = "shrink";
 		infoCard.VendorGoldLabel.SetText("$SLUTS_FillyRank");
 	}

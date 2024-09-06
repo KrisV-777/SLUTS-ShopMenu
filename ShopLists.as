@@ -95,8 +95,7 @@ class ShopLists extends MovieClip
 	}
 	
 	public function onLoad(): Void
-	{		
-		SetCategoriesList();
+	{
 
 		itemList.listState.maxTextLength = 80;
 
@@ -118,6 +117,7 @@ class ShopLists extends MovieClip
 		searchWidget.addEventListener("inputChange", this, "onSearchInputChange");
 
 		FocusHandler.instance.setFocus(itemList, 0);
+
 		categoryList.suspended = false;
 		itemList.suspended = false;
 		_disableInput = false;
@@ -139,12 +139,9 @@ class ShopLists extends MovieClip
 	public function SetCategoriesList(/* CATEGORIES */): Void
 	{
 		var categories = [
-			{text: "$All", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			// {text: "$SLUTS_Valuables", flag: ExchangeType.VALUABLE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$SLUTS_FillyGear", flag: ExchangeType.GEAR, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$SLUTS_Licenses", flag: ExchangeType.LICENSE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$SLUTS_Upgrades", flag: ExchangeType.UPGRADE, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$SLUTS_Extra", flag: ExchangeType.EXTRA, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_All", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Potions", flag: ExchangeType.POTIONS, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
+			{text: "$SLUTS_Customization", flag: ExchangeType.CUSTOMIZATION, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
 			{text: "$SLUTS_Miscellaneous", flag: ExchangeType.UNSPECIFIED + ExchangeType.VALUABLE, bDontHide: true, savedItemIndex: 0, filterFlag: 1}
 		];
 
@@ -159,9 +156,9 @@ class ShopLists extends MovieClip
 				categoryList.dividerIndex = i;
 		}
 
-		categoryList.selectedIndex = 0;
 		categoryLabel.textField.SetText(categoryList.selectedEntry.text);
 		categoryList.InvalidateData();
+		categoryList.onItemPress(0, 0);
 	}
 	
   /* PUBLIC FUNCTIONS */

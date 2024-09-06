@@ -174,22 +174,22 @@ columns.subTypeColumn.state2.sortOptions = <{DESCENDING | CASEINSENSITIVE}, {ASC
 ; columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
 ; RANK COLUMN -------------------------------------------------------
-columns.rankcolumn.type = TEXT
-columns.rankcolumn.name = '$SLUTS_Rank'
-columns.rankcolumn.states = 2
-columns.rankcolumn.width = 0.09
-columns.rankcolumn.border = a_textBorder
-
-columns.rankcolumn.state1.label.text = '$SLUTS_Rank'
-columns.rankcolumn.state1.label.arrowDown = true
-columns.rankcolumn.state1.entry.text = @infoRank
-columns.rankcolumn.state1.sortAttributes = <infoRank, text>
-columns.rankcolumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
-
-columns.rankcolumn.state2.label.text = '$SLUTS_Rank'
-columns.rankcolumn.state2.entry.text = @infoRank
-columns.rankcolumn.state2.sortAttributes = <infoRank, text>
-columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+; columns.rankcolumn.type = TEXT
+; columns.rankcolumn.name = '$SLUTS_Rank'
+; columns.rankcolumn.states = 2
+; columns.rankcolumn.width = 0.09
+; columns.rankcolumn.border = a_textBorder
+; 
+; columns.rankcolumn.state1.label.text = '$SLUTS_Rank'
+; columns.rankcolumn.state1.label.arrowDown = true
+; columns.rankcolumn.state1.entry.text = @infoRank
+; columns.rankcolumn.state1.sortAttributes = <infoRank, text>
+; columns.rankcolumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+; 
+; columns.rankcolumn.state2.label.text = '$SLUTS_Rank'
+; columns.rankcolumn.state2.entry.text = @infoRank
+; columns.rankcolumn.state2.sortAttributes = <infoRank, text>
+; columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
 ; ITEM VIEWS -------------------------------------------------------
 views.exchangeView.primaryColumn = itemNameColumn
