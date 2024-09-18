@@ -5,7 +5,4 @@ AuthortimeSharedAssets.fla
 .actionScriptProperties
 SLUTS_Shop.swf
 *.html
-
-# Tmp reference only
-option.as
-select.as
+*.swf
