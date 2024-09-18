@@ -156,22 +156,22 @@ columns.subTypeColumn.state2.sortAttributes = <subTypeDisplay, text>
 columns.subTypeColumn.state2.sortOptions = <{DESCENDING | CASEINSENSITIVE}, {ASCENDING | CASEINSENSITIVE}>
 
 ; STOCK COLUMN -------------------------------------------------------
-; columns.stockColumn.type = TEXT
-; columns.stockColumn.name = '$STOCK'
-; columns.stockColumn.states = 2
-; columns.stockColumn.width = 0.09
-; columns.stockColumn.border = a_textBorder
-; 
-; columns.stockColumn.state1.label.text = '$STK'
-; columns.stockColumn.state1.label.arrowDown = true
-; columns.stockColumn.state1.entry.text = @infoStock
-; columns.stockColumn.state1.sortAttributes = <infoStock, text>
-; columns.stockColumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
-; 
-; columns.stockColumn.state2.label.text = '$STK'
-; columns.stockColumn.state2.entry.text = @infoStock
-; columns.stockColumn.state2.sortAttributes = <infoStock, text>
-; columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+columns.stockColumn.type = TEXT
+columns.stockColumn.name = '$STOCK'
+columns.stockColumn.states = 2
+columns.stockColumn.width = 0.09
+columns.stockColumn.border = a_textBorder
+
+columns.stockColumn.state1.label.text = '$STK'
+columns.stockColumn.state1.label.arrowDown = true
+columns.stockColumn.state1.entry.text = @infoStock
+columns.stockColumn.state1.sortAttributes = <infoStock, text>
+columns.stockColumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
+
+columns.stockColumn.state2.label.text = '$STK'
+columns.stockColumn.state2.entry.text = @infoStock
+columns.stockColumn.state2.sortAttributes = <infoStock, text>
+columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
 ; RANK COLUMN -------------------------------------------------------
 ; columns.rankcolumn.type = TEXT
