@@ -175,18 +175,18 @@ columns.stockColumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CA
 
 RANK COLUMN -------------------------------------------------------
 columns.rankcolumn.type = TEXT
-columns.rankcolumn.name = '$SLUTS_Rank'
+columns.rankcolumn.name = '$SLUTS_RANK'
 columns.rankcolumn.states = 2
 columns.rankcolumn.width = 0.09
 columns.rankcolumn.border = a_textBorder
 
-columns.rankcolumn.state1.label.text = '$SLUTS_Rank'
+columns.rankcolumn.state1.label.text = '$SLUTS_RANK'
 columns.rankcolumn.state1.label.arrowDown = true
 columns.rankcolumn.state1.entry.text = @infoRank
 columns.rankcolumn.state1.sortAttributes = <infoRank, text>
 columns.rankcolumn.state1.sortOptions = <{DESCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
 
-columns.rankcolumn.state2.label.text = '$SLUTS_Rank'
+columns.rankcolumn.state2.label.text = '$SLUTS_RANK'
 columns.rankcolumn.state2.entry.text = @infoRank
 columns.rankcolumn.state2.sortAttributes = <infoRank, text>
 columns.rankcolumn.state2.sortOptions = <{ASCENDING | NUMERIC}, {ASCENDING | CASEINSENSITIVE}>
