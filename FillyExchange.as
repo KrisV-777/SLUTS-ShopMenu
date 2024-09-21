@@ -2,6 +2,7 @@
 import Shared.GlobalFunc;
 import gfx.ui.NavigationCode;
 import gfx.ui.InputDetails;
+import gfx.managers.FocusHandler;
 
 import skyui.components.list.ListLayoutManager;
 import skyui.components.list.TabularList;
@@ -162,7 +163,7 @@ class FillyExchange extends MovieClip
 	{
 		super();
 		_fadedOut = true;
-		_platform = 0;		// TODO: find a dynamic way to figure this out
+		_platform = 0;
 
 		itemCard = itemCardFadeHolder.ItemCard_mc;
 		navPanel = bottomBarEX.bottomBar.buttonPanel;
@@ -367,8 +368,10 @@ class FillyExchange extends MovieClip
 			event.item = _itemSelected;
 
 		skse.SendModEvent("Sluts_OnExchange", "", event.amount, event.item.formId);
-		if (event.item.extra.count)
+		if (event.item.extra.count) {
 			event.item.extra.count -= event.amount;
+		}
+		FocusHandler.instance.setFocus(shopLists.itemList, 0);
 	}
 
 	private function onShowItemsList(event: Object): Void
@@ -405,6 +408,8 @@ class FillyExchange extends MovieClip
 			shopLists.itemList.disableInput = false;
 			shopLists.categoryList.disableSelection = false;
 			shopLists.categoryList.disableInput = false;
+
+			FocusHandler.instance.setFocus(shopLists.itemList, 0);
 		}
 	}
 

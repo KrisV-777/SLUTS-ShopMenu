@@ -56,9 +56,10 @@ class ShopListEntry extends TabularListEntry
 	// @override TabularListEntry
 	public function setEntry(a_entryObject: Object, a_state: ListState): Void
 	{
-		var itemCost = a_entryObject.extra.value
+		var extra = a_entryObject.extra
+		var itemCost = extra.value
+		var count = extra.count
 		var plCoins = a_state.list._parent._parent._playerCoins
-		var count = a_entryObject.extra.count
 		a_entryObject.enabled = (count == undefined || count > 0) && itemCost <= plCoins
 		super.setEntry(a_entryObject, a_state);
 	}
