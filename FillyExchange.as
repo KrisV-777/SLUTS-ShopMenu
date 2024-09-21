@@ -82,6 +82,8 @@ class FillyExchange extends MovieClip
 
 		var plupdate = {encumbrance: a_encumbranceCurrent, maxEncumbrance: a_encumbranceMax};
 		bottomBarEX.updateBarterInfo(plupdate, itemCard.itemInfo, _playerCoins, _playerRank);
+
+		shopLists.itemList.UpdateList()
 	}
 
 	public function AddItems(a_formlist: Object)
@@ -104,6 +106,11 @@ class FillyExchange extends MovieClip
 				value:	Math.max(data[3], 0),
 				name: 	data[4] == "" ? undefined : data[4]
 			};
+			if (extra.name) {
+				var firstChar = extra.name.charAt(0).toUpperCase();
+    		var restOfString = extra.name.substr(1);
+    		extra.name = firstChar + restOfString;
+			}
 			_extraData.push(extra);
 		}
 	}
@@ -406,7 +413,7 @@ class FillyExchange extends MovieClip
 		navPanel.clearButtons();
 
 		navPanel.addButton({text: "$Exit", controls: _cancelControls});
-		// navPanel.addButton({text: "$Search", controls: _searchControls});
+		navPanel.addButton({text: "$Search", controls: _searchControls});
 		if (_platform != 0) {
 			navPanel.addButton({text: "$Column", controls: _sortColumnControls});
 			navPanel.addButton({text: "$Order", controls: _sortOrderControls});

@@ -27,6 +27,7 @@ class ShopDataSetter extends InventoryDataSetter
 
     var extra = a_entryObject.extra;
     a_entryObject.infoRank = extra.rank;
+		a_entryObject.infoStock = extra.count == undefined ? "-" : extra.count;
 
 		var value = Math.max((extra.value * _barterBuyMult * _coinRatio), 1);
 		a_entryObject.value = Math.floor(value + 0.5);

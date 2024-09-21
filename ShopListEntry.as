@@ -56,10 +56,11 @@ class ShopListEntry extends TabularListEntry
 	// @override TabularListEntry
 	public function setEntry(a_entryObject: Object, a_state: ListState): Void
 	{
+		var itemCost = a_entryObject.extra.value
+		var plCoins = a_state.list._parent._parent._playerCoins
+		var count = a_entryObject.extra.count
+		a_entryObject.enabled = (count == undefined || count > 0) && itemCost <= plCoins
 		super.setEntry(a_entryObject, a_state);
-
-		if (a_entryObject.extra.count == 0 && a_entryObject.enabled)
-			a_entryObject.enabled = false;
 	}
 
   // @override TabularListEntry
@@ -117,13 +118,6 @@ class ShopListEntry extends TabularListEntry
 
 		if (a_entryObject.soulLVL != undefined) {
 			text = text + " (" + a_entryObject.soulLVL + ")";
-		}
-
-		if (a_entryObject.extra.count != undefined) {
-			if (a_entryObject.extra.count > 0)
-				text += " (" + a_entryObject.extra.count.toString() + ")";
-			else if (a_entryObject.extra.count == 0)
-				text += " (" + Translator.translate("$SLUTS_SoldOut") + ")";
 		}
 
 		if (text.length > a_state.maxTextLength) {
