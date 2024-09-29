@@ -174,8 +174,7 @@ class FillyExchange extends MovieClip
 
 		_shopItems = new Array();
 		_extraData = new Array();
-		// TODO: rewrite to fit own icons. Names are set in an external .swf file loaded through config (?)
-		_categoryListIconArt = ["inv_all", "inv_weapons", "inv_armor", "inv_potions", "inv_scrolls", "inv_food", "inv_ingredients", "inv_books", "inv_keys", "inv_misc"];
+		_categoryListIconArt = ["all", "gear", "potions", "misc"];
 	}
 
 	public function onLoad(): Void

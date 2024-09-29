@@ -34,9 +34,7 @@ quantityMenu.minCount = 6 ; Number of items required to trigger quantity dialog.
 ; =====================================================================================================================
 [Appearance] 
 ; =====================================================================================================================
-; TODO: .source options should point at a custom swf with custom once soonTM
-
-icons.category.source = 'skyui/icons_category_psychosteve.swf'
+icons.category.source = 'sluts/SlutsIcons.swf'
 
 icons.item.source = 'skyui/icons_item_psychosteve.swf'
 icons.item.noColor = false

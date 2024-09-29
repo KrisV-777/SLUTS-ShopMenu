@@ -16,6 +16,7 @@ class CategoryListV extends CategoryList {
 			iconHeight = iconSize;
 		if (iconWidth == undefined)
 			iconWidth = iconSize;
+		iconSize = 81
 	}
 
 	// @override CategoryList
