@@ -142,7 +142,7 @@ class ShopLists extends MovieClip
 			{text: "$SLUTS_All", flag: 1, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
 			{text: "$SLUTS_Gear", flag: ExchangeType.GEAR, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
 			{text: "$SLUTS_Potions", flag: ExchangeType.POTIONS, bDontHide: true, savedItemIndex: 0, filterFlag: 1},
-			{text: "$SLUTS_Miscellaneous", flag: ExchangeType.UNSPECIFIED + ExchangeType.VALUABLE, bDontHide: true, savedItemIndex: 0, filterFlag: 1}
+			{text: "$SLUTS_Miscellaneous", flag: ExchangeType.UNSPECIFIED, bDontHide: true, savedItemIndex: 0, filterFlag: 1}
 		];
 
 		categoryList.listEnumeration = new BasicEnumeration(categoryList.entryList);
