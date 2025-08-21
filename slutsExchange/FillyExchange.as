@@ -4,7 +4,6 @@ import gfx.ui.NavigationCode;
 import gfx.ui.InputDetails;
 import gfx.managers.FocusHandler;
 
-import skyui.components.list.ListLayoutManager;
 import skyui.components.list.TabularList;
 import skyui.components.list.ListLayout;
 import skyui.props.PropertyDataExtender;
@@ -20,6 +19,7 @@ import slutsExchange.BottomBarEX;
 import slutsExchange.ShopLists;
 import slutsExchange.CategoryList;
 import slutsExchange.ShopDataSetter;
+import slutsExchange.ExchangeLayoutManager;
 
 
 class slutsExchange.FillyExchange extends MovieClip
@@ -243,7 +243,7 @@ class slutsExchange.FillyExchange extends MovieClip
 		itemList.addDataProcessor(new InventoryIconSetter(_config["Appearance"]));
 		itemList.addDataProcessor(new PropertyDataExtender(_config["Appearance"], _config["Properties"], "itemProperties", "itemIcons", "itemCompoundProperties"));
 
-		var layout: ListLayout = ListLayoutManager.createLayout(_config["ListLayout"], "FillyExchangeLayout");
+		var layout: ListLayout = ExchangeLayoutManager.createLayout(_config["ListLayout"], "FillyExchangeLayout");
 		itemList.layout = layout;
 
 		// Not 100% happy with doing this here, but has to do for now.

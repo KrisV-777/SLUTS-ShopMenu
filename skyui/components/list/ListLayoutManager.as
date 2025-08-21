@@ -1,13 +1,11 @@
 ﻿import skyui.util.ConfigManager;
 import skyui.components.list.ListLayout;
 
-import slutsExchange.ExchangeType;
-
 class skyui.components.list.ListLayoutManager
 {
   /* INITIALIZATION */
-  
-  	static private var _initialized = initialize();
+
+  static private var _initialized = initialize();
 	
 	static private function initialize(): Boolean
 	{
@@ -16,21 +14,18 @@ class skyui.components.list.ListLayoutManager
 		ConfigManager.setConstant("NAME", ListLayout.COL_TYPE_NAME);
 		ConfigManager.setConstant("TEXT", ListLayout.COL_TYPE_TEXT);
 		
-		// ConfigManager.addConstantTable("skyui.defines.Actor", skyui.defines.Actor);
-		// ConfigManager.addConstantTable("skyui.defines.Armor", skyui.defines.Armor);
-		// ConfigManager.addConstantTable("skyui.defines.Form", skyui.defines.Form);
-		// ConfigManager.addConstantTable("skyui.defines.Input", skyui.defines.Input);
-		// ConfigManager.addConstantTable("skyui.defines.Inventory", skyui.defines.Inventory);
-		// ConfigManager.addConstantTable("skyui.defines.Item", skyui.defines.Item);
-		// ConfigManager.addConstantTable("skyui.defines.Magic", skyui.defines.Magic);
-		// ConfigManager.addConstantTable("skyui.defines.Material", skyui.defines.Material);
-		// ConfigManager.addConstantTable("skyui.defines.Weapon", skyui.defines.Weapon);
-		
-		ConfigManager.addConstantTable("ExchangeType", ExchangeType);
+		ConfigManager.addConstantTable("skyui.defines.Actor", skyui.defines.Actor);
+		ConfigManager.addConstantTable("skyui.defines.Armor", skyui.defines.Armor);
+		ConfigManager.addConstantTable("skyui.defines.Form", skyui.defines.Form);
+		ConfigManager.addConstantTable("skyui.defines.Input", skyui.defines.Input);
+		ConfigManager.addConstantTable("skyui.defines.Inventory", skyui.defines.Inventory);
+		ConfigManager.addConstantTable("skyui.defines.Item", skyui.defines.Item);
+		ConfigManager.addConstantTable("skyui.defines.Magic", skyui.defines.Magic);
+		ConfigManager.addConstantTable("skyui.defines.Material", skyui.defines.Material);
+		ConfigManager.addConstantTable("skyui.defines.Weapon", skyui.defines.Weapon);
 
 		return true;
 	}
-	
 	
   /* PUBLIC FUNCTIONS */
   
