@@ -1,7 +1,7 @@
 ﻿import CategoryList;
 
-class CategoryListV extends CategoryList {
-	
+class slutsExchange.CategoryListV extends CategoryList {
+
 	public var iconHeight;
 	public var iconWidth;
 	public var selectorOffset;	// offset from rightern bound for selector

@@ -1,4 +1,4 @@
-class ExchangeType
+class slutsExchange.ExchangeType
 {
   public static var UNSPECIFIED: Number	= 0x00000001;
   public static var GEAR: Number			  = 0x00000002;

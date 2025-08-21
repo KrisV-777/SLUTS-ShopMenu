@@ -8,7 +8,7 @@ import skyui.util.ConfigManager;
 import skyui.util.Translator;
 
 
-class ShopListEntry extends TabularListEntry
+class slutsExchange.ShopListEntry extends TabularListEntry
 {
   /* CONSTANTS */
 

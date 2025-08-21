@@ -1,4 +1,4 @@
-class ShopDataSetter extends InventoryDataSetter
+class slutsExchange.ShopDataSetter extends InventoryDataSetter
 {
   /* PRIVATE VARIABLES */
 	

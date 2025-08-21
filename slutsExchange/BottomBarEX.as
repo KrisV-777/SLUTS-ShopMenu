@@ -1,7 +1,7 @@
 ﻿
 import BottomBar;
 
-class BottomBarEX extends MovieClip {
+class slutsExchange.BottomBarEX extends MovieClip {
 
 	public var bottomBar: BottomBar;
 	

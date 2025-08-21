@@ -16,12 +16,13 @@ import skyui.util.ConfigManager;
 import skyui.util.Translator;
 import skyui.components.ButtonPanel;
 
-import BottomBarEX;
-import ShopLists;
-import CategoryList;
+import slutsExchange.BottomBarEX;
+import slutsExchange.ShopLists;
+import slutsExchange.CategoryList;
+import slutsExchange.ShopDataSetter;
 
 
-class FillyExchange extends MovieClip
+class slutsExchange.FillyExchange extends MovieClip
 {
 	private static var SLUTS_SERIALIZEKEY = "Sluts_Serialize";
 
@@ -193,7 +194,7 @@ class FillyExchange extends MovieClip
 		itemCard._visible = false;
 		navPanel.hideButtons();
 
-		var categoryList: CategoryList = shopLists.categoryList;
+		var categoryList = shopLists.categoryList;
 		categoryList.iconArt = _categoryListIconArt;
 	}
 

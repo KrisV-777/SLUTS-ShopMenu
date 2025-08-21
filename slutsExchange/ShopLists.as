@@ -22,10 +22,10 @@ import skyui.util.DialogManager;
 import skyui.util.Debug;
 
 import skyui.defines.Input;
-import CategoryListV;
-import ExchangeType;
+import slutsExchange.CategoryListV;
+import slutsExchange.ExchangeType;
 
-class ShopLists extends MovieClip 
+class slutsExchange.ShopLists extends MovieClip 
 {
 	/* CONSTANTS */
 	

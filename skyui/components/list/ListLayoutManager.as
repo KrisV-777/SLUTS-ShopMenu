@@ -1,6 +1,8 @@
 ﻿import skyui.util.ConfigManager;
 import skyui.components.list.ListLayout;
 
+import slutsExchange.ExchangeType;
+
 class skyui.components.list.ListLayoutManager
 {
   /* INITIALIZATION */
