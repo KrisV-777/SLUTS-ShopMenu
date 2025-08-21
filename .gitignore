@@ -3,6 +3,7 @@ AuthortimeSharedAssets.fla
 .settings
 .project
 .actionScriptProperties
-SLUTS_Shop.swf
 *.html
 *.swf
+!buttonart.swf
+!gfxfontlib.swf
