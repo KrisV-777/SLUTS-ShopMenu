@@ -16,7 +16,6 @@ class slutsExchange.CategoryListV extends CategoryList {
 			iconHeight = iconSize;
 		if (iconWidth == undefined)
 			iconWidth = iconSize;
-		iconSize = 81
 	}
 
 	// @override CategoryList
@@ -70,7 +69,7 @@ class slutsExchange.CategoryListV extends CategoryList {
 			return;
 		}
 			
-		// if (_selectedIndex == -1) {
+		if (_selectedIndex == -1) {
 			selectorCenter._visible = false;
 
 			if (selectorLeft != undefined)
@@ -80,7 +79,7 @@ class slutsExchange.CategoryListV extends CategoryList {
 				selectorRight._visible = false;
 
 			return;
-		// }
+		}
 
 		var selectedClip = _entryClipManager.getClip(_selectedIndex - _segmentOffset);
 

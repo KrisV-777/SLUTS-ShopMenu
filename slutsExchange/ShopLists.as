@@ -118,6 +118,11 @@ class slutsExchange.ShopLists extends MovieClip
 
 		FocusHandler.instance.setFocus(itemList, 0);
 
+		categoryList.selectorCenter._visible = false;
+		categoryList.selectorLeft._visible = false;
+		categoryList.selectorRight._visible = false;
+		categoryList.selectorCenter = undefined;
+
 		categoryList.suspended = false;
 		itemList.suspended = false;
 		_disableInput = false;
